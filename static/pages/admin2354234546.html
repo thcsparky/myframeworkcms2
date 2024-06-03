@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom CSS */
+    .banner {
+      background-color: #36454F; /* darkish grayish blue */
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+    .navigation-panel {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .content {
+      margin-top: 20px;
+    }
+    .status-label {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Banner -->
+  <div class="banner">
+    <h1>Admin Panel</h1>
+  </div>
+
+  <!-- Navigation Panel -->
+  <div class="navigation-panel" style="background-image: url('background-image.jpg'); background-size: cover; background-position: center;">
+    <div class="btn-group" role="group">
+    <button type="button" class="btn btn-primary" style="width: 150px;" onclick="loadhome();"><i class="fa fa-home"></i> Home</button>
+    <button type="button" class="btn btn-secondary" style="width: 150px;" onclick="loadmenu();"><i class="fa fa-menu"></i> Menu</button>
+    <button type="button" class="btn btn-success" style="width: 150px;" onclick="loadevents();"><i class="fa fa-calendar"></i> Events</button>
+    <button type="button" class="btn btn-danger" style="width: 150px;" onclick="loadcontacts();"><i class="fa fa-phone"></i> Contacts</button>
+    <button type="button" class="btn btn-warning" style="width: 150px;" onclick="loadpictures();"><i class="fa fa-camera"></i> Pictures</button>
+    </div>
+    </div>
+    
+  <!-- Content -->
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <textarea class="form-control" rows="20" id='content'></textarea>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-danger" onclick="savecurrent();">Save</button>
+            <p>  </p>
+            <button type="button" class="btn-success" onclick="gohome();">Back</button>
+          </div>
+          <span class="status-label ml-2" id="setstatus">Status: </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--load into textbox scripts-->
+  <script type="text/javascript">
+    globvar = '';
+    
+    function gohome(){
+        document.location.href = '/';
+    }
+
+   function savecurrent(){
+        var whatsave = globvar;
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        switch (whatsave) {
+            case 'home':
+            alert(globvar)
+            var datsend = document.getElementById('content').value;
+
+            socket.emit('message', 'savethishomepanel:' + datsend);
+            document.getElementById('setstatus').innerText = 'Status: sent save home and content to server end!'
+            break;
+            case 'menu':
+            
+            socket.emit('message', 'savethismenupanel:' + document.getElementById('content').value)
+            document.getElementById('setstatus').innerText = 'Status: sent save menu and content to server end!'
+            break;
+            case 'events':
+            
+            socket.emit('message', 'savethiseventspanel:' + document.getElementById('content').value)
+            document.getElementById('setstatus').innerText = 'Status: sent save events and content  to server end!'
+            break;
+            case 'contacts':
+            
+            socket.emit('message', 'savethiscontactpanel:' + document.getElementById('content').value)
+            document.getElementById('setstatus').innerText = 'Status: sent save contact an content to server end!'
+            break;
+            case 'pictures':
+            
+            socket.emit('message', 'savethispicturespanel:' + document.getElementById('content').value)
+            document.getElementById('setstatus').innerText = 'Status: sent save pictures and content  to server end!'
+            break;
+            default:
+            console.log("Unknown option");
+            }
+
+        
+    }
+    
+   function loadhome() {
+      var socket = io.connect('http://' + document.domain + ':' + location.port);
+      globvar = 'home'
+      socket.emit('message', 'gethomepanel');
+      socket.on('response', function(data) {
+        document.getElementById('content').value = data;
+      });
+    }
+    function loadmenu() {
+    globvar = 'menu'
+    var socket = io.connect('http://' + document.domain + ':' + location.port);
+    socket.emit('message', 'getmenupanel');
+    socket.on('menupanel_response', function(data) {
+      document.getElementById('content').value = data;
+    });
+    }
+
+    function loadevents() {
+      globvar = 'events'
+      var socket = io.connect('http://' + document.domain + ':' + location.port);
+      socket.emit('message', 'geteventspanel');
+      socket.on('eventspanel_response', function(data) {
+        document.getElementById('content').value = data;
+      });
+    }
+
+    function loadcontacts() {
+      globvar = 'contacts'
+      var socket = io.connect('http://' + document.domain + ':' + location.port);
+      socket.emit('message', 'getcontactspanel');
+      socket.on('contactspanel_response', function(data) {
+        document.getElementById('content').value = data;
+      });
+    } 
+
+    function loadpictures() {
+      globvar = 'pictures'
+      var socket = io.connect('http://' + document.domain + ":" + location.port);
+      socket.emit('message', 'getpicturespanel');
+      socket.on('picturespanel_response', function(data){
+        document.getElementById('content').value = data;
+      });
+    }
+    function loadContent(url) {
+      document.getElementById("content").innerText = "";
+      fetch(url)
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById("content").innerText = html;
+        });
+    }
+  </script>
+  <!-- Socket.io Script Reference -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

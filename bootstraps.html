@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>440webpresence</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles can be added here */
+        /* Also don't forget to turn off sticky roll in visual studio its dumb */
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">440webpresence - software design and testing
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown-menu" aria-haspopup="true" aria-expanded="false">Links</a>
+                            <div class="dropdown-menu" aria-labelledby="rgiadeop" id="menubox">
+                            <a class="dropdown-item" href="#">Option 1</a>
+                            <a class="dropdown-item" href="#">Option 2</a>
+                            <a class="dropdown-item" href="#">Option 3</a>
+                          </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="display-4">Welcome to our homepage!</h1>
+            <p class="lead">Providing technical solutions for companies in need of modernization, maintenance, or simply a hearty social media portfolio.</p>
+            <a href="#contact" class="btn btn-primary">Get Started</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>About Us</h2>
+                    <p>As for right now 3/5/24 we are a 2 man team that is particurly planned on starting out locally for small businesses,
+                    <br>and for very cheap real-estate listings in the local area. We are a very versatile group of developers and software testers.
+                    <br>Hi, i'm sparky. I'm the person writing this particular message at the time, im here per se with my friend Raphael.
+                    </p> 
+                </div>
+                <div class="col-lg-6">
+                    <!-- Placeholder for an image -->
+                    <img src="/static/alien.svg" alt="About Us Image" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center">Our Services</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Web Development</h5>
+                            <p class="card-text">We will create a personalized website for you. If you want WordPress or another content manaager,
+                                then that can be done. If you want a custom coded website like this one you can receive a site built
+                                from the ground up by one of our full-stack developers. Each taylor made site will have the preferred option 
+                                to be accessible and functional on mobile devices. I will also set up social media accounts for you if you choose to have that <br>
+                                and don't want to spend all the time registering everywhere just to get your name out there!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">System Administration</h5>
+                            <p class="card-text">Part of building your website includes setting up server software, but our team
+                                goes well beyond that when it comes to linux server management and we can even assist in configuring windows machines<br>
+
+                                Security audits can be done to check for malware beyond where a typical anti-virus looks, for example a malicious "Service Worker"<br>
+                                that could be embedded in your browser.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Software Development</h5>
+                            <p class="card-text">We can create applications in many different languages. my personal favorites are python and bash scripting. <br>
+                            I like to think outside the box, and that could include making a web front end for terminal-ran application such as in the forensic disk image restoring software autopsy<br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="text-center">Contact Us</h2>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="card">
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email"
+                                        placeholder="Enter your email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea class="form-control" id="message"
+                                        placeholder="Enter your message"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p>&copy; 2024 440webpresence. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

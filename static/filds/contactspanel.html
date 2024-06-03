@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><br>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Information</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    h2 {
+      font-size: 2.5em;
+      color: #333;
+      text-align: center;
+    }
+    .contact-info {
+      margin-bottom: 20px;
+    }
+    .contact-info h4 {
+      color: #007bff;
+      margin-bottom: 0.5em;
+    }
+    .contact-info p {
+      color: #666;
+    }
+    .map {
+      height: 400px;
+      border: 1px solid #ccc;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Contact Information</h2>
+    <div class="contact-info">
+      <h4>Facebook Page</h4>
+      <p><a href="https://www.facebook.com/example" target="_blank">Visit our Facebook page</a></p>
+    </div>
+    <div class="contact-info">
+      <h4>Phone Number</h4>
+      <p>123-456-7890</p>
+    </div>
+    <div class="contact-info">
+      <h4>Address</h4>
+      <p>123 Main Street, City, State, ZIP</p>
+    </div>
+    <div class="contact-info">
+      <h4>Map</h4>
+      <div id="map" class="map"></div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- MapQuest API script -->
+  <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=YOUR_MAPQUEST_API_KEY"></script>
+  <script>
+    // Initialize MapQuest map
+    var map = L.map('map', {
+      layers: MQ.mapLayer(),
+      center: [37.7749, -122.4194], // Example coordinates (San Francisco)
+      zoom: 12 // Adjust zoom level as needed
+    });
+  </script>
+</body>
+</html>

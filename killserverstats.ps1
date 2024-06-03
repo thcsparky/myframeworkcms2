@@ -1,0 +1,1 @@
+echo 'fasfsdf' > C:\Users\spark\OneDrive\Documents\coding\python\tay\static\loginstuff.txt

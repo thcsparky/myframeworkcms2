@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bar Website</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Add custom styles here if needed */
+    .nav-link {
+      padding-left: 30px; /* Adjust the padding to make space for the SVG */
+    }
+    .nav-item.active .nav-link {
+      background-color: #ccc; /* Grey background for active link */
+    }
+    .container {
+      background-color: #f5f5f5; /* Light grey background for container */
+    }
+    .content-area {
+    height: calc(100vh - 150px); /* Adjust the height to match the space below the navbar */
+    width: 100%;
+    overflow-y: auto;
+    padding: 20px;
+    }
+
+    /* Media queries for smaller screens */
+
+    @media (max-width: 768px) {
+    .content-area {
+    height: calc(100vh - 100px); /* Adjust the height for smaller screens */
+    }
+    }
+
+    @media (max-width: 480px) {
+    .content-area {
+    height: calc(100vh - 50px); /* Adjust the height for even smaller screens */
+    }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="IDstorename"><h3>this is where i put the logo/banner</h3>></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="loadhome();">Home</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#" onclick="loadmenu();">Menu</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#" onclick="loadevents();">Events</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#" onclick="loadcontacts();">Contact</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#" onclick="loadpictures();">Pictures</a>
+            </li>
+            
+          
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/static/pages/adminlogin.html">Admin</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="content-area" id="content"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.3/socket.io.js"></script>
+  <script>
+
+    window.onload = function(){
+      loadhome();
+    }
+    function loadhome() {
+      var socket = io.connect('http://' + document.domain + ':' + location.port);
+      socket.emit('message', 'gethomepanel');
+      socket.on('response', function(data) {
+        document.getElementById('content').innerHTML = data;
+      });
+    }
+    function loadmenu() {
+    var socket = io.connect('http://' + document.domain + ':' + location.port);
+    socket.emit('message', 'getmenupanel');
+    socket.on('menupanel_response', function(data) {
+      document.getElementById('content').innerHTML = data;
+    });
+    }
+
+    function loadevents() {
+      var socket = io.connect('http://' + document.domain + ':' + location.port);
+      socket.emit('message', 'geteventspanel');
+      socket.on('eventspanel_response', function(data) {
+        document.getElementById('content').innerHTML = data;
+      });
+    }
+
+    function loadcontacts() {
+      var socket = io.connect('http://' + document.domain + ':' + location.port);
+      socket.emit('message', 'getcontactspanel');
+      socket.on('contactspanel_response', function(data) {
+        document.getElementById('content').innerHTML = data;
+      });
+    } 
+
+    function loadpictures() {
+      var socket = io.connect('http://' + document.domain + ":" + location.port);
+      socket.emit('message', 'getpicturespanel');
+      socket.on('picturespanel_response', function(data){
+        document.getElementById('content').innerHTML = data;
+      });
+    }
+    function loadContent(url) {
+      document.getElementById("content").innerHTML = "";
+      fetch(url)
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById("content").innerHTML = html;
+        });
+    }
+  </script>
+</body>
+</html>

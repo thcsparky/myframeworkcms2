@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;background:#202122;display:block;z-index:1;position:relative" width="500" height="200" viewBox="0 0 500 200">
+  <linearGradient id="lg-0.7461479549368757" x1="0" x2="0" y1="0" y2="1">
+    <stop stop-color="#202122" offset="0.1"></stop>
+    <stop stop-color="#dfdfdf " offset="1.5"></stop>
+  </linearGradient>
+  <path d="" fill="url(&quot;#lg-0.7461479549368757&quot;)" opacity="0.5">
+    <animate attributeName="d" dur="10s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" calcMode="spline" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1" begin="3s" values="M0 0L 0 150Q 83 140  166 130T 332 110T 498 120T 664 100T 830 80L 830 0 Z;M0 0L 0 140Q 83 135  166 125T 332 105T 498 120T 664 100T 830 80L 830 0 Z;M0 0L 0 160Q 83 150  166 130T 332 100T 498 120T 664 100T 830 80L 830 0 Z;M0 0L 0 150Q 83 140  166 130T 332 110T 498 120T 664 100T 830 80L 830 0 Z" fill="url(&quot;#lg-0.7461479549368757&quot;)"></animate>
+  </path>
+  <path d="" fill="url(&quot;#lg-0.7461479549368757&quot;)" opacity="0.4">
+    <animate attributeName="d" dur="10s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" calcMode="spline" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1" begin="-1s" values="M0 0L 0 140Q 83 135  166 125T 332 105T 498 120T 664 100T 830 80L 830 0 Z;M0 0L 0 160Q 83 150  166 130T 332 100T 498 120T 664 100T 830 80L 830 0 Z;M0 0L 0 150Q 83 140  166 130T 332 110T 498 120T 664 100T 830 80L 830 0 Z;M0 0L 0 140Q 83 135  166 125T 332 105T 498 120T 664 100T 830 80L 830 0 Z" fill="url(&quot;#lg-0.7461479549368757&quot;)"></animate>
+  </path>
+  <path d="" fill="url(&quot;#lg-0.7461479549368757&quot;)" opacity="0.4">
+    <animate attributeName="d" dur="10s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" calcMode="spline" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1" begin="-2s" values="M0 0L 0 150Q 83 135  166 125T 332 105T 498 120T 664 100T 830 80L 830 0 Z;M0 0L 0 140Q 83 135  166 125T 332 105T 498 120T 664 100T 830 80L 830 0 Z;M0 0L 0 160Q 83 150  166 130T 332 100T 498 120T 664 100T 830 80L 830 0 Z;M0 0L 0 150Q 83 140  166 130T 332 110T 498 120T 664 100T 830 80L 830 0 Z" fill="url(&quot;#lg-0.7461479549368757&quot;)"></animate>
+  </path>
+  <path d="" fill="url(&quot;#lg-0.7461479549368757&quot;)" opacity="0.4">
+    <animate attributeName="d" dur="10s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" calcMode="spline" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1" begin="-3s" values="M0 0L 0 160Q 83 150  166 130T 332 100T 498 120T 664 100T 830 80L 830 0 Z;M0 0L 0 150Q 83 140  166 130T 332 110T 498 120T 664 100T 830 80L 830 0 Z;M0 0L 0 140Q 83 135  166 125T 332 105T 498 120T 664 100T 830 80L 830 0 Z;M0 0L 0 160Q 83 150  166 130T 332 100T 498 120T 664 100T 830 80L 830 0 Z" fill="url(&quot;#lg-0.7461479549368757&quot;)"></animate>
+  </path>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#fff" font-family="Arial" font-size="24">Tub</text>
+</svg>

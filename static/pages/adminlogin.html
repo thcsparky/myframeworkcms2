@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- SocketIO Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
+  <style>
+      #statusblock {
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: #f8d7da; /* Red background color */
+    color: #0c0d3a; /* Dark red text color */
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease; /* Smooth transition */
+  }
+
+  /* Hover effect */
+  #statusblock:hover {
+    background-color: #f5c6cb; /* Light red background color on hover */
+    color: #721c24; /* Dark red text color */
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">Admin Login</div>
+          <br>
+        
+          <div class="card-body">
+            <form id="loginForm">
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter username">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password">
+              </div>
+              <!-- Status response area -->
+              <div class="form-group" id="statusResponse"></div>
+              <button type="button" class="btn btn-primary" onclick="sendLogin()">Login</button>
+            </form>
+          </div>
+        </div>
+        <div class="mt-3">
+          <a href="/" class="btn btn-danger">Back</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--status block here -->
+  <br>
+  <div class='container' id='statusblock'>
+
+  </div>
+  <script>
+
+    window.onload = function(){
+        statusblock.innerHTML = '<p>Status: Idle... BE SURE TO USE A UNIQUE IP ADDRESS WHEN SIGNING IN FOR SECURITY PURPOSES SUCH AS YOUR PHONES <BR> HOTSPOT WITHOUT A VPN</p>';
+           }
+     // Initialize SocketIO
+    var socket = io.connect('http://' + document.domain + ':' + location.port);
+    // Function to send login message via SocketIO
+    function sendLogin() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+      
+      // Getting user's IP address
+      var ipAddress = '';
+
+      // Fetching IP address from third-party service (replace this with your own method)
+      fetch('https://api64.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => {
+        ipAddress = data.ip;
+
+        if (username && password) {
+          // Append IP address to the password string
+          var loginMessage = 'getloginmessage:' + username + ',mid.' + password + ',ip.' + ipAddress;
+          socket.emit('message', loginMessage);
+        } else {
+          // Clear previous status responses and show alert
+          document.getElementById('statusResponse').innerHTML = '';
+          alert('Please enter both username and password.');
+        }
+      })
+      .catch(error => console.error('Error fetching IP address:', error));
+    }
+// Receive password response
+// Generic event listener for any message received
+socket.onAny((eventName, data) => {
+
+    //for debugging
+    statusblock.innerHTML = `<p>${data}</p>`;
+  
+});
+
+socket.on('correct_password_response', function(data){
+    document.location.href = data;
+});
+
+  </script>
+</body>
+</html>
